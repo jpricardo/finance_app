@@ -15,6 +15,7 @@ class App extends StatelessWidget {
       title: 'Finance App',
       themeMode: ThemeMode.dark,
       theme: ThemeData(
+        inputDecorationTheme: InputDecorationThemeData(isDense: true),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.orange,
           brightness: Brightness.dark,
