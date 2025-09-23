@@ -12,7 +12,7 @@ class ActivityChart extends StatefulWidget {
 class _ActivityChartState extends State<ActivityChart> {
   List<ActivityChartDataModel>? incomes;
   List<ActivityChartDataModel>? expenses;
-  ActivityRange? selectedRange = ActivityRange.lastYear;
+  ActivityRange? selectedRange;
   final TextEditingController dropdownController = TextEditingController();
 
   AreaChartData modelToData(ActivityChartDataModel model) {
@@ -26,10 +26,16 @@ class _ActivityChartState extends State<ActivityChart> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+
+    selectedRange = ActivityRange.lastYear;
     incomes = ActivityChartDataModel.getIncomes();
     expenses = ActivityChartDataModel.getExpenses();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
