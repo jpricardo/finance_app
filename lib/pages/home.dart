@@ -1,5 +1,6 @@
 import 'package:finance_app/components/custom_card.dart';
 import 'package:finance_app/models/activity_model.dart';
+import 'package:finance_app/widgets/activity_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_charts/material_charts.dart';
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
         ),
 
         child: Column(
-          spacing: 16,
+          spacing: 24,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
@@ -44,13 +45,12 @@ class HomePage extends StatelessWidget {
                 Row(
                   spacing: 8,
 
-                  // runSpacing: 16,
                   children: [_totalIncome(context), _totalExpense(context)],
                 ),
               ],
             ),
 
-            _chart(context),
+            ActivityChart(),
 
             RecentActivity(),
           ],
@@ -62,56 +62,6 @@ class HomePage extends StatelessWidget {
         tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  MaterialAreaChart _chart(BuildContext context) {
-    return MaterialAreaChart(
-      width: MediaQuery.of(context).size.width,
-      height: 200,
-      style: AreaChartStyle(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-      ),
-
-      series: [
-        AreaChartSeries(
-          name: 'Income',
-          color: Theme.of(context).colorScheme.tertiary,
-          dataPoints: [
-            AreaChartData(value: 3000, label: 'Jan'),
-            AreaChartData(value: 3250, label: 'Fev'),
-            AreaChartData(value: 2950, label: 'Mar'),
-            AreaChartData(value: 4000, label: 'Apr'),
-            AreaChartData(value: 3500, label: 'May'),
-            AreaChartData(value: 3800, label: 'Jun'),
-            AreaChartData(value: 3500, label: 'Jul'),
-            AreaChartData(value: 3500, label: 'Aug'),
-            AreaChartData(value: 3000, label: 'Sep'),
-            AreaChartData(value: 4200, label: 'Out'),
-            AreaChartData(value: 3500, label: 'Nov'),
-            AreaChartData(value: 3500, label: 'Dec'),
-          ],
-        ),
-
-        AreaChartSeries(
-          name: 'Expense',
-          color: Theme.of(context).colorScheme.error,
-          dataPoints: [
-            AreaChartData(value: 2500, label: 'Jan'),
-            AreaChartData(value: 300, label: 'Fev'),
-            AreaChartData(value: 2800, label: 'Mar'),
-            AreaChartData(value: 4000, label: 'Apr'),
-            AreaChartData(value: 3000, label: 'May'),
-            AreaChartData(value: 3000, label: 'Jun'),
-            AreaChartData(value: 3000, label: 'Jul'),
-            AreaChartData(value: 3200, label: 'Aug'),
-            AreaChartData(value: 1500, label: 'Sep'),
-            AreaChartData(value: 3500, label: 'Out'),
-            AreaChartData(value: 3000, label: 'Nov'),
-            AreaChartData(value: 2800, label: 'Dec'),
-          ],
-        ),
-      ],
     );
   }
 
